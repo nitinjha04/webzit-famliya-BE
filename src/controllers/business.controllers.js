@@ -1,10 +1,10 @@
 const HttpError = require("../helpers/HttpError.helpers");
 const Response = require("../helpers/Response.helpers");
-const { WorkService } = require("../services/work.service");
+const { BusinessService } = require("../services/business.service");
 
-class WorkController {
+class BusinessController {
   create = async (req, res) => {
-    const data = await WorkService.create({ ...req.body });
+    const data = await BusinessService.create({ ...req.body });
     Response(res).body(data).send();
   };
   getAll = async (req, res) => {
@@ -16,12 +16,12 @@ class WorkController {
     if (type) {
       filter.type = type;
     }
-    const data = await WorkService.find(filter).sort({ createdAt: -1 });
+    const data = await BusinessService.find(filter).sort({ createdAt: -1 });
 
     Response(res).body(data).send();
   };
   getById = async (req, res) => {
-    const data = await WorkService.findById(req.params.id).select("-__v");
+    const data = await BusinessService.findById(req.params.id).select("-__v");
     Response(res).body(data).send();
   };
   getOwn = async (req, res) => {
@@ -31,11 +31,11 @@ class WorkController {
     };
     if (category) filter.category = category;
     if (type) filter.type = type;
-    const data = await WorkService.find(filter);
+    const data = await BusinessService.find(filter);
     Response(res).body(data).send();
   };
   update = async (req, res) => {
-    const data = await WorkService.findByIdAndUpdate(
+    const data = await BusinessService.findByIdAndUpdate(
       req.params.id,
       { ...req.body },
       { new: true }
@@ -47,9 +47,9 @@ class WorkController {
     Response(res).body(data).send();
   };
   delete = async (req, res) => {
-    const data = await WorkService.findByIdAndDelete(req.params.id);
+    const data = await BusinessService.findByIdAndDelete(req.params.id);
     Response(res).body(data).send();
   };
 }
 
-module.exports.WorkController = new WorkController();
+module.exports.BusinessController = new BusinessController();

@@ -19,11 +19,7 @@ const Schema = new mongoose.Schema(
     category: {
       type: String,
     },
-    type: {
-      type: String,
-      enum: ["Business", "Freelancer"],
-      default: "Business",
-    },
+
     customerVisit: {
       type: Boolean,
       default: false,
@@ -93,4 +89,4 @@ const Schema = new mongoose.Schema(
   }
 );
 
-exports.Work = mongoose.model("Work", Schema);
+exports.Business = mongoose.model("Business", Schema);
