@@ -20,47 +20,51 @@ const Schema = new mongoose.Schema(
         type: String,
       },
     },
-    workExperience: {
-      image: {
-        type: String,
-      },
-      role: {
-        type: String,
-      },
-      organization: {
-        type: String,
-      },
-      duration: {
-        from: {
-          type: Date,
+    workExperience: [
+      {
+        image: {
+          type: String,
         },
-        to: {
-          type: Date,
+        role: {
+          type: String,
         },
-      },
-      hourlyRate: {
-        type: String,
-      },
-    },
-    education: {
-      image: {
-        type: String,
-      },
-      program: {
-        type: String,
-      },
-      institute: {
-        type: String,
-      },
-      duration: {
-        from: {
-          type: Date,
+        organization: {
+          type: String,
         },
-        to: {
-          type: Date,
+        duration: {
+          from: {
+            type: Date,
+          },
+          to: {
+            type: Date,
+          },
+        },
+        hourlyRate: {
+          type: String,
         },
       },
-    },
+    ],
+    education: [
+      {
+        image: {
+          type: String,
+        },
+        program: {
+          type: String,
+        },
+        institute: {
+          type: String,
+        },
+        duration: {
+          from: {
+            type: Date,
+          },
+          to: {
+            type: Date,
+          },
+        },
+      },
+    ],
   },
   {
     timestamps: true,
